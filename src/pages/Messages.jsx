@@ -25,38 +25,6 @@ const Messages = () => {
   useEffect(() => {
     if (authState && authState.isAuthenticated) {
       const accessToken = oktaAuth.getAccessToken();
-      fetch(config.resourceServer.messagesUrl, {
-        headers: {
-          Authorization: `Bearer ${accessToken}`,
-        },
-      })
-        .then((response) => {
-          if (!response.ok) {
-            return Promise.reject();
-          }
-          return response.json();
-        })
-        .then((data) => {
-          let index = 0;
-          const formattedMessages = data.messages.map((message) => {
-            const date = new Date(message.date);
-            const day = date.toLocaleDateString();
-            const time = date.toLocaleTimeString();
-            index += 1;
-            return {
-              date: `${day} ${time}`,
-              text: message.text,
-              id: `message-${index}`,
-            };
-          });
-          setMessages(formattedMessages);
-          setMessageFetchFailed(false);
-        })
-        .catch((err) => {
-          setMessageFetchFailed(true);
-          /* eslint-disable no-console */
-          console.error(err);
-        });
     }
   }, [authState, oktaAuth]);
 

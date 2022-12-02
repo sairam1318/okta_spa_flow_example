@@ -20,7 +20,12 @@ import config from './config';
 import Navbar from './Navbar';
 import Routes from './components/Routes';
 
-const oktaAuth = new OktaAuth(config.oidc);
+const oktaAuth = new OktaAuth({
+  issuer: config.oidc.issuer,
+  clientId: config.oidc.clientId,
+  scopes: config.oidc.scopes,
+  redirectUri: config.oidc.redirect_uri
+});
 
 const App = () => {
   const navigate = useNavigate();

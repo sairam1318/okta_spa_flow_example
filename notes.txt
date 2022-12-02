@@ -1,0 +1,9 @@
+
+THINGS TO DO:
+    1.create .env.local for env if .okta.env is not configurable.
+    2. Add the issuer id and client id from the created application  in okta.
+    3. Assign the application to user or group.
+    4. Change the login redirect uri in the code as per the application.
+    5. Once if login was successful, check with the resource server and add the server.
+
+

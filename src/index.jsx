@@ -16,14 +16,17 @@ import { createRoot } from 'react-dom/client';
 import { BrowserRouter } from 'react-router-dom';
 import 'semantic-ui-css/semantic.min.css';
 import './polyfills';
-import App from './App';
 import './index.css';
 import registerServiceWorker from './registerServiceWorker';
+import AppWithRouterAccess from './with_authjs/AppWithRouterAccess';
+import App from './App';
 
 const container = document.getElementById('root');
 const root = createRoot(container);
+// useStrict
 root.render(
   <BrowserRouter>
-    <App/>
+    <AppWithRouterAccess />
+    {/* <App /> */}
   </BrowserRouter>);
 registerServiceWorker();
